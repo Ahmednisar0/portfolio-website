@@ -1,101 +1,78 @@
-import Image from "next/image";
+// pages/index.js
+'use client'
+import { useState } from 'react';
+import Skills from '@/components/Skills';
+import Navbar from '@/components/Navbar';
+import Image from 'next/image';
+import Certifications from '@/components/Certificates';
+import { PiNotSupersetOfBold } from 'react-icons/pi';
+import Cards from '@/components/Portfoliocards';
+import Footer from '@/components/footer';
+import Contact from '@/components/contact';
+
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const [activeSection, setActiveSection] = useState(null);
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+  const scrollToSection = (sectionId:any) => {
+      const section = document.getElementById(sectionId);
+      if (section) {
+          section.scrollIntoView({ behavior: 'smooth' });
+      }
+      setActiveSection(sectionId); // Update active section state
+  };
+  return (<div> 
+    
+     <Navbar/>
+     <div className="font-sans bg-gray-100 text-gray-900 flex">
+
+{/* Left Side - Text Content */}
+<section id="main" className="flex flex-col justify-center items-start text-left px-16 w-1/2 py-16">
+  {/* Name: Ahmed Raza */}
+  <div className="text-5xl font-bold mb-6">
+    <span>Hi,</span>
+  </div>
+
+  {/* Greeting Text */}
+  <h2 className="text-5xl font-bold mb-6">I'm <span className="text-5xl font-bold mb-6" style={{ color: '#ffa500' }}>Ahmed</span></h2>
+  <p className="text-5xl font-bold mb-6">A Front-End Developer</p>
+
+  {/* Description */}
+  <p className="text-lg max-w-3xl mx-auto mb-8">
+    I'm passionate about building modern, dynamic websites and applications. I specialize in front-end technologies like React, TypeScript, and Next.js to deliver seamless user experiences and performance optimization.
+  </p>
+
+  {/* Buttons */}
+  <div className="flex space-x-6">
+    <div onClick={() => scrollToSection('contact')} 
+            className={`bg-black text-white px-6 py-3 rounded-lg cursor-pointer text-xl font-semibold hover:bg-gray-700
+                        ${activeSection === 'skills' ? 'text-[#ff4500] underline' : ''}`}> 
+      Contact Me
+    </div>
+    <div onClick={() => scrollToSection('cards')} 
+            className={`bg-[#ffa500] text-white px-6 py-3 rounded-lg cursor-pointer text-xl font-semibold hover:bg-orange-600
+                        ${activeSection === 'skills' ? 'text-[#ff4500] underline' : ''}`}>
+      Projects
+    </div>
+  </div>
+</section>
+
+{/* Right Side - Owl Image */}
+<section className="w-1/2 py-8 flex justify-center items-center">
+  <img
+    src="/images/pic.jpeg"  // Correct path to your image in the public folder
+    alt="Owl"
+    className="w-96 h-96 rounded-full shadow-xl"
+  />
+</section>
+
+</div>
+
+    <Skills />
+    <Certifications />
+    <Cards />
+    <Contact />
+    <Footer />
     </div>
   );
 }
