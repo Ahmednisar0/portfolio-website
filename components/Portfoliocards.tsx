@@ -9,7 +9,7 @@ export default function Cards() {
   return (
     <div id="cards" className="text-center my-8">
       <h2 className="text-3xl font-bold text-gray-800 mb-8">Portfolio</h2>
-      <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 max-w-6xl mx-auto">
+      <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 w-[370px] lg:max-w-6xl mx-auto">
         
         {/* Card 1 */}
         <div className="bg-white rounded-lg shadow-md overflow-hidden">
@@ -84,7 +84,7 @@ export default function Cards() {
             
           </div>
         </div>
-        <div className="bg-white rounded-lg shadow-md overflow-hidden">
+        <div className="bg-white rounded-lg  shadow-md overflow-hidden">
           <Image
             src="/images/Horor-web.png" // Replace with your image path
             alt="Portfolio Image 4"
