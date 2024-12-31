@@ -1,4 +1,5 @@
-// components/Contact.js
+// components/Contact.j
+
 
 import { useState } from 'react';
 

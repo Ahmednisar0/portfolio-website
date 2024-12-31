@@ -1,11 +1,10 @@
 // pages/index.js
 'use client'
+
 import { useState } from 'react';
 import Skills from '@/components/Skills';
 import Navbar from '@/components/Navbar';
-import Image from 'next/image';
 import Certifications from '@/components/Certificates';
-import { PiNotSupersetOfBold } from 'react-icons/pi';
 import Cards from '@/components/Portfoliocards';
 import Footer from '@/components/footer';
 import Contact from '@/components/contact';
